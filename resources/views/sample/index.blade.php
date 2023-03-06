@@ -68,11 +68,11 @@
                 <i class="fa-solid fa-pen-to-square mr-20">Edit</i></a> --}}
               <form action="{{ route('sample.destroy', ['sample' => $book['id'], '_method' => 'delete']) }}"
                 method="Post">
+                @csrf
                 {{-- <form action="/sample/{{ $book->id }}" method="post"> --}}
                 {{-- {{ method_field('destroy') }} --}}
                 <a href={{ 'sample/' . $book['id'] . '/edit' }}>
                   <i class="fa-solid fa-pen-to-square mr-20">Edit</i></a>
-                @csrf
                 {{-- @method('DELETE') --}}
                 <button type="submit" class="btn btn-danger"><i class="fa-sharp fa-solid fa-trash">Delete</i></button>
               </form>
