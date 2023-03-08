@@ -14,7 +14,14 @@ class SampleLSMController extends Controller
      */
     public function index(): View
     {
-        $data = sampleLSM::get();
+        if (request()->has('search')) {
+
+            $data = sampleLSM::where('book_name', 'LIKE', '%' . request('search') . '%')->get();
+        } else {
+            $data = sampleLSM::all();
+        }
+        // return view('sample.index', ['book' => $data]);
+
         // dd($data);
         return view('sample.index', compact('data'));
     }
@@ -60,7 +67,7 @@ class SampleLSMController extends Controller
     public function show(sampleLSM $sampleLSM)
     {
         return view('sample.add-book');
-        // return redirect(route('sample.index'));
+
     }
 
     /**
@@ -88,20 +95,6 @@ class SampleLSMController extends Controller
         $sample->quantity = $request->quantity;
         $sample->save();
         return redirect(route('sample.index'));
-
-
-        // $this->authorize('update', $sampleLSM);
-        // $validated = $request->validate([
-        //     'genre' => 'required|string|max:255',
-        //     'book_name' => 'required|string|max:255',
-        //     'book_author' => 'required|string|max:255',
-        //     'pub_date' => 'required|date',
-        //     'quantity' => 'required|numeric',
-        // ]);
-
-        // $sampleLSM->update($validated);
-
-
     }
 
     /**
@@ -116,5 +109,19 @@ class SampleLSMController extends Controller
         // $data->delete();
         // return redirect('sample');
         //
+    }
+    public function search(Request $request)
+    {
+        // Get the search value from the request
+        // $search = $request->input('search');
+
+        // // Search in the title and body columns from the posts table
+        // $sample = sampleLSM::query()
+        //     ->where('id', 'LIKE', "%{$search}%")
+        //     ->orWhere('book_name', 'LIKE', "%{$search}%")
+        //     ->get();
+
+        // // Return the search view with the resluts compacted
+        // return view('sample.index', compact('dashboard'));
     }
 }

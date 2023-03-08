@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SampleLSMController;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +33,11 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('sample', SampleLSMController::class)
     ->middleware(['auth', 'verified']);
+
+Route::resource('student', StudentController::class)
+    ->middleware(['auth', 'verified']);
+
+Route::get('search', [SampleLSMController::class, 'index'])->name('search');
 
 require __DIR__ . '/auth.php';
 

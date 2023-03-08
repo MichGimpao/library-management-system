@@ -6,14 +6,13 @@
   </x-slot>
 
   <!-- component -->
-  <section class="bg-white:250">
+  <section class="bg-white:250 ">
     <div class="grid min-h-screen place-items-center">
       <div class="w-11/12 p-12 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12">
         <h2>
           EDIT BOOK DETAILS
         </h2>
         <form method="post" action="{{ route('sample.update', ['sample' => $sample['id'], '_method' => 'put']) }}">
-          {{-- <form method="PUT" action="{{ url('sample/' . $sample['id']) }}"> --}}
           <x-text-input id="id" hidden type="text" name="id" value="{{ $sample['id'] }}" />
 
           @csrf
