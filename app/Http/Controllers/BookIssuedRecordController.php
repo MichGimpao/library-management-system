@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Models\BookIssuedRecord;
+use App\Models\sampleLSM;
+use App\Models\Student;
+
+
 use Illuminate\Http\Request;
 
 class BookIssuedRecordController extends Controller
@@ -14,7 +18,7 @@ class BookIssuedRecordController extends Controller
      */
     public function index(): View
     {
-        $data = BookIssuedRecord::get();
+        $data = BookIssuedRecord::with(["student"])->get();
         return view('bookissued.index', compact('data'));
     }
 
@@ -23,21 +27,25 @@ class BookIssuedRecordController extends Controller
      */
     public function create()
     {
-        return view('bookissued.add-bkissued');
+        // dd("gdthghdr");
+
+        return view('bookissued.add-issued', ["students" => Student::get(), "books" => sampleLSM::get()]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
+        // dd($request->all());
         $validated = $request->validate([
             'stud_id' => 'required|string|max:255',
             'book_id' => 'required|string|max:255',
             'bk_title' => 'required|string|max:255',
-            'stud_name' => 'required|string|max:255',
+            // 'stud_name' => 'required|string|max:255',
             'no_copies' => 'required|string|max:255',
             'release_date' => 'required',
+            'status' => 'required',
             'due_date' => 'required',
         ]);
         try {
@@ -45,6 +53,7 @@ class BookIssuedRecordController extends Controller
 
             return redirect(route('bookissued.index'));
         } catch (\Exception $th) {
+            dd($th);
             return redirect(route('bookissued.index'))->withErrors($validated);
         }
 

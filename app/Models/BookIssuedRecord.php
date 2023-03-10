@@ -13,10 +13,15 @@ class BookIssuedRecord extends Model
         'stud_id',
         'book_id',
         'bk_title',
-        'stud_name',
+        // 'stud_name',
         'no_copies',
         'release_date',
         'due_date',
     ];
     protected $table = "book_issued_records";
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class, "stud_id");
+    }
 }

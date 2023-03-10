@@ -32,7 +32,11 @@
         <a href="{{ url('sample/edit-book') }}">EDIT BOOK</a>
       </button> --}}
       <button class="text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none">
-        ISSUED/RETURNED BOOK
+        <a href="{{ url('bookissued') }}"> ISSUED BOOK RECORD</a>
+      </button>
+
+      <button class="text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none">
+        <a href="{{ url('') }}"> RETURNED BOOK RECORD</a>
       </button>
     </nav>
   </div>

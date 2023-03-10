@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SampleLSMController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\BookIssuedRecordController;
+use App\Models\BookIssuedRecord;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +40,9 @@ Route::resource('student', StudentController::class)
     ->middleware(['auth', 'verified']);
 
 Route::get('search', [SampleLSMController::class, 'index'])->name('search');
+
+Route::resource('bookissued', BookIssuedRecordController::class)
+    ->middleware(['auth', 'verified']);
 
 require __DIR__ . '/auth.php';
 

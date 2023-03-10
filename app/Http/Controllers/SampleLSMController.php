@@ -67,7 +67,6 @@ class SampleLSMController extends Controller
     public function show(sampleLSM $sampleLSM)
     {
         return view('sample.add-book');
-
     }
 
     /**
