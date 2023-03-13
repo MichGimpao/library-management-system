@@ -12,7 +12,7 @@ class BookIssuedRecord extends Model
         'status',
         'stud_id',
         'book_id',
-        'bk_title',
+        // 'bk_title',
         // 'stud_name',
         'no_copies',
         'release_date',
@@ -23,5 +23,9 @@ class BookIssuedRecord extends Model
     public function student()
     {
         return $this->belongsTo(Student::class, "stud_id");
+    }
+    public function book()
+    {
+        return $this->belongsTo(SampleLSM::class, "book_id");
     }
 }

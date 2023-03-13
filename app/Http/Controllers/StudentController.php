@@ -14,7 +14,13 @@ class StudentController extends Controller
      */
     public function index(): View
     {
-        $data = Student::get();
+        if (request()->has('search')) {
+
+            $data = Student::where('fname', 'LIKE', '%' . request('search') . '%')->get();
+        } else {
+            $data = Student::all();
+        }
+        // $data = Student::get();
         return view('student.index', compact('data'));
     }
 

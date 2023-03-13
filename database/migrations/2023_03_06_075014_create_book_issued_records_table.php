@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('status');
             $table->foreignId('stud_id')->constrained('students');
-            $table->string('book_id');
-            $table->string('bk_title');
+            $table->foreignId('book_id')->constrained('sample_l_s_m_s');;
+            // $table->string('bk_title');
             // $table->string('stud_name');
             $table->string('no_copies');
             $table->date('release_date');

@@ -37,7 +37,7 @@
           <th scope="col" class="px-6 py-4 font-medium text-gray-900">ID</th>
           {{-- <th scope="col" class="px-6 py-4 font-medium text-gray-900">Student ID</th> --}}
           <th scope="col" class="px-6 py-4 font-medium text-gray-900">Student Name</th>
-          <th scope="col" class="px-6 py-4 font-medium text-gray-900">Book ID</th>
+          {{-- <th scope="col" class="px-6 py-4 font-medium text-gray-900">Book ID</th> --}}
           <th scope="col" class="px-6 py-4 font-medium text-gray-900">Book Title</th>
           <th scope="col" class="px-6 py-4 font-medium text-gray-900">No. of Copies</th>
           <th scope="col" class="px-6 py-4 font-medium text-gray-900">Release Date</th>
@@ -53,8 +53,8 @@
             <td>{{ $bkissued->id }}</td>
             <td>{{ $bkissued['student']['fname'] . ' ' . $bkissued['student']['lname'] }}</td>
             {{-- <td>{{ $bkissued->stud_name }}</td> --}}
-            <td>{{ $bkissued->book_id }}</td>
-            <td>{{ $bkissued->bk_title }}</td>
+            <td>{{ $bkissued['book']['book_name'] }}</td>
+            {{-- <td>{{ $bkissued->bk_title }}</td> --}}
             <td>{{ $bkissued->no_copies }}</td>
             <td>{{ $bkissued->release_date }}</td>
             <td>{{ $bkissued->due_date }}</td>

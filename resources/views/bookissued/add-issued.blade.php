@@ -14,40 +14,38 @@
         <form method="POST" action="{{ url('bookissued') }}">
           @csrf
           <div>
-
-            <label for="">Student Name:</label>
-            <select name="stud_id" id="">
+            <label>Student Name</label>
+            <select name="stud_id" id=""
+              class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 
+              px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
               @foreach ($students as $student)
                 <option value="{{ $student['id'] }}">
                   {{ $student['fname'] . ' ' . $student['lname'] }}
                 </option>
               @endforeach
             </select>
-
-            {{-- <x-input-label for="stud_id" :value="__('Student ID')" />
-
-            <x-text-input id="stud_id" class="block mt-1 w-full" type="text" name="stud_id" :value="old('stud_id')"
-              required autofocus autocomplete="stud_id" />
-            <x-input-error :messages="$errors->get('stud_id')" class="mt-2" />
-          </div>
-          <div>
-            <x-input-label for="stud_name" :value="__('Student Name')" />
-            <x-text-input id="stud_name" class="block mt-1 w-full" type="text" name="stud_name" :value="old('stud_name')"
-              required autofocus autocomplete="stud_name" />
-            <x-input-error :messages="$errors->get('stud_name')" class="mt-2" />
-          </div> --}}
             <div>
-              <x-input-label for="book_id" :value="__('Book ID')" />
+              <label>Book Name</label>
+              <select name="book_id" id=""
+                class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 
+                px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                @foreach ($sample_l_s_m as $SampleLSM)
+                  <option value="{{ $SampleLSM['id'] }}">
+                    {{ $SampleLSM['book_name'] }}
+                  </option>
+                @endforeach
+              </select>
+              {{-- <x-input-label for="book_id" :value="__('Book ID')" />
               <x-text-input id="book_id" class="block mt-1 w-full" type="text" name="book_id" :value="old('book_id')"
                 required autofocus autocomplete="book_id" />
-              <x-input-error :messages="$errors->get('book_id')" class="mt-2" />
+              <x-input-error :messages="$errors->get('book_id')" class="mt-2" /> --}}
             </div>
-            <div>
+            {{-- <div>
               <x-input-label for="bk_title" :value="__('Book Title ')" />
               <x-text-input id="bk_title" class="block mt-1 w-full" type="text" name="bk_title" :value="old('bk_title')"
                 required autofocus autocomplete="bk_title" />
               <x-input-error :messages="$errors->get('bk_title')" class="mt-2" />
-            </div>
+            </div> --}}
             <div>
               <x-input-label for="no_copies" :value="__('No. of Copies')" />
               <x-text-input id="no_copies" class="block mt-1 w-full" type="text" name="no_copies" :value="old('no_copies')"
@@ -62,7 +60,7 @@
             </div>
             <div>
               <x-input-label for="due_date" :value="__('Due Date')" />
-              <x-text-input id="due_date" class="block mt-1 w-full" type="text" name="due_date" :value="old('due_date')"
+              <x-text-input id="due_date" class="block mt-1 w-full" type="date" name="due_date" :value="old('due_date')"
                 required autofocus autocomplete="due_date" />
               <x-input-error :messages="$errors->get('due_date')" class="mt-2" />
             </div>

@@ -41,6 +41,9 @@ Route::resource('student', StudentController::class)
 
 Route::get('search', [SampleLSMController::class, 'index'])->name('search');
 
+Route::get('search', [StudentController::class, 'index'])->name('search');
+
+
 Route::resource('bookissued', BookIssuedRecordController::class)
     ->middleware(['auth', 'verified']);
 

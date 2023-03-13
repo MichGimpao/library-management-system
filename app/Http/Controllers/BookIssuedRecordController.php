@@ -18,7 +18,7 @@ class BookIssuedRecordController extends Controller
      */
     public function index(): View
     {
-        $data = BookIssuedRecord::with(["student"])->get();
+        $data = BookIssuedRecord::with(["student", "book"])->get();
         return view('bookissued.index', compact('data'));
     }
 
@@ -29,7 +29,7 @@ class BookIssuedRecordController extends Controller
     {
         // dd("gdthghdr");
 
-        return view('bookissued.add-issued', ["students" => Student::get(), "books" => sampleLSM::get()]);
+        return view('bookissued.add-issued', ["students" => Student::get(), "sample_l_s_m" => sampleLSM::get()]);
     }
 
     /**
@@ -41,7 +41,7 @@ class BookIssuedRecordController extends Controller
         $validated = $request->validate([
             'stud_id' => 'required|string|max:255',
             'book_id' => 'required|string|max:255',
-            'bk_title' => 'required|string|max:255',
+            // 'bk_title' => 'required|string|max:255',
             // 'stud_name' => 'required|string|max:255',
             'no_copies' => 'required|string|max:255',
             'release_date' => 'required',

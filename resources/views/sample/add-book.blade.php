@@ -32,7 +32,7 @@
           </div>
           <div>
             <x-input-label for="pub_date" :value="__('Publication Date')" />
-            <x-text-input id="pub_date" class="block mt-1 w-full" type="text" name="pub_date" :value="old('pub_date')"
+            <x-text-input id="pub_date" class="block mt-1 w-full" type="date" name="pub_date" :value="old('pub_date')"
               required autofocus autocomplete="pub_date" />
             <x-input-error :messages="$errors->get('pub_date')" class="mt-2" />
           </div>
